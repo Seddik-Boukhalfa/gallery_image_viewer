@@ -1,5 +1,5 @@
-import 'package:gallery_image_viewer/gallery_image_viewer.dart';
 import 'package:flutter/material.dart';
+import 'package:gallery_image_viewer/gallery_image_viewer.dart';
 
 void main() => runApp(const MyApp());
 
@@ -33,11 +33,11 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<ImageProvider> _imageProviders = [
-    Image.network("https://picsum.photos/id/237/200/300").image,
-    Image.network("https://picsum.photos/seed/picsum/200/300").image,
-    Image.network("https://picsum.photos/200/300?grayscale").image,
-    Image.network("https://picsum.photos/200/300").image,
-    Image.network("https://picsum.photos/200/300?grayscale").image
+    Image.network("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg").image,
+    Image.network("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg").image,
+    Image.network("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg").image,
+    Image.network("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg").image,
+    Image.network("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg").image
   ];
 
   @override
@@ -56,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () {
                   showImageViewer(
                       context,
-                      Image.network("https://picsum.photos/id/237/200/300")
+                      Image.network("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg")
                           .image,
                       swipeDismissible: true);
                 }),

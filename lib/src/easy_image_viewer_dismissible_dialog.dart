@@ -114,33 +114,41 @@ class _EasyImageViewerDismissibleDialogState
                           _handleDismissal();
                         },
                       ),),
-            Align(
-              alignment: Alignment.center,
-              child: Positioned(
-                left: 10,
-                right: 10,
-                child: Row(
-                  children: [
-                    IconButton(
-                      icon: const Icon(Icons.close),
-                      color: widget.closeButtonColor,
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                        _handleDismissal();
-                      },
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.close),
-                      color: widget.closeButtonColor,
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                        _handleDismissal();
-                      },
-                    ),
-                  ],
+                             Positioned(
+              left: 10,
+              child: IconButton(
+                icon: const Icon(
+                  Icons.arrow_back,
+                  color: Colors.white,
                 ),
+                style: IconButton.styleFrom(
+                  backgroundColor: Colors.black.withOpacity(0.5),
+                ),
+                onPressed: () {
+                  _pageController.previousPage(
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeInOut,
+                  );
+                },
               ),
             ),
+            Positioned(
+
+              right: 10,
+              child:
+                 IconButton(
+
+                    icon: const Icon(Icons.arrow_forward,color: Colors.white,),
+                    style: IconButton.styleFrom(
+                      backgroundColor: Colors.black.withOpacity(0.5),
+                    ),
+                    onPressed: () {
+                        _pageController.nextPage(duration: const Duration(milliseconds: 300), curve: Curves.easeInOut,);
+                    },
+                  ),
+              
+            ),
+      
                 ],),),);
 
     if (widget.swipeDismissible) {

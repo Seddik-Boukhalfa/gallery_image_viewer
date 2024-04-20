@@ -113,8 +113,35 @@ class _EasyImageViewerDismissibleDialogState
                           Navigator.of(context).pop();
                           _handleDismissal();
                         },
-                      ))
-                ])));
+                      ),),
+            Align(
+              alignment: Alignment.center,
+              child: Positioned(
+                left: 10,
+                right: 10,
+                child: Row(
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.close),
+                      color: widget.closeButtonColor,
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        _handleDismissal();
+                      },
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.close),
+                      color: widget.closeButtonColor,
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        _handleDismissal();
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ),
+                ],),),);
 
     if (widget.swipeDismissible) {
       return Dismissible(

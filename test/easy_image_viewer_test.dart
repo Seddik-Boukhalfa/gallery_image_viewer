@@ -1,6 +1,6 @@
-import 'package:gallery_image_viewer/gallery_image_viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:gallery_image_viewer/gallery_image_viewer.dart';
 
 import 'support/test_helper.dart';
 
@@ -88,7 +88,7 @@ void main() {
 
       final multiImageProvider = MultiImageProvider(imageProviders);
 
-      final dialogFuture = showImageViewerPager(context, multiImageProvider,
+      final dialogFuture = showImageViewerPager(context, multiImageProvider, onDownload: (d){},
           onPageChanged: (page) {
         currentPage = page;
       }, onViewerDismissed: (page) {
@@ -145,7 +145,7 @@ void main() {
 
       final multiImageProvider = MultiImageProvider(imageProviders);
 
-      final dialogFuture = showImageViewerPager(context, multiImageProvider,
+      final dialogFuture = showImageViewerPager(context, multiImageProvider, onDownload: (d) {},
           swipeDismissible: true, onViewerDismissed: (page) {
         dismissed = true;
         pageOnDismissal = page;
@@ -190,7 +190,7 @@ void main() {
       final multiImageProvider =
           MultiImageProvider(imageProviders, initialIndex: 2);
 
-      final dialogFuture = showImageViewerPager(context, multiImageProvider,
+      final dialogFuture = showImageViewerPager(context, multiImageProvider, onDownload: (d) {},
           onViewerDismissed: (page) {
         dismissed = true;
         pageOnDismissal = page;
@@ -233,6 +233,7 @@ void main() {
       final multiImageProvider = MultiImageProvider(imageProviders);
 
       showImageViewerPager(context, multiImageProvider,
+          onDownload: (d) {},
           backgroundColor: Colors.red, closeButtonColor: Colors.green);
       await tester.pumpAndSettle();
 

@@ -1,5 +1,9 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+// import 'package:flutter_media_downloader/flutter_media_downloader.dart';
 
 import 'easy_image_provider.dart';
 import 'easy_image_view_pager.dart';
@@ -13,6 +17,7 @@ class EasyImageViewerDismissibleDialog extends StatefulWidget {
   final bool immersive;
   final void Function(int)? onPageChanged;
   final void Function(int)? onViewerDismissed;
+  final Function(String) onDownload;
   final bool useSafeArea;
   final bool swipeDismissible;
   final Color backgroundColor;
@@ -27,6 +32,7 @@ class EasyImageViewerDismissibleDialog extends StatefulWidget {
       this.onViewerDismissed,
       this.useSafeArea = false,
       this.swipeDismissible = false,
+      required this.onDownload,
       required this.backgroundColor,
       required this.closeButtonTooltip,
       required this.closeButtonColor})
@@ -92,27 +98,49 @@ class _EasyImageViewerDismissibleDialogState
                 clipBehavior: Clip.none,
                 alignment: Alignment.center,
                 children: <Widget>[
-                  EasyImageViewPager(
-                      easyImageProvider: widget.imageProvider,
-                      pageController: _pageController,
-                      onScaleChanged: (scale) {
-                        setState(() {
-                          _dismissDirection = scale <= 1.0
-                              ? DismissDirection.down
-                              : DismissDirection.none;
-                        });
-                      }),
+                  GestureDetector(
+                    onTap: () {
+                         Navigator.of(context).pop();
+                         _handleDismissal();
+                    },
+                    child: EasyImageViewPager(
+                        easyImageProvider: widget.imageProvider,
+                        pageController: _pageController,
+                        onScaleChanged: (scale) {
+                          setState(() {
+                            _dismissDirection = scale <= 1.0
+                                ? DismissDirection.down
+                                : DismissDirection.none;
+                          });
+                        }),
+                  ),
                   Positioned(
-                      top: 5,
+                      top: 0,
                       right: 5,
-                      child: IconButton(
-                        icon: const Icon(Icons.close),
-                        color: widget.closeButtonColor,
-                        tooltip: widget.closeButtonTooltip,
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                          _handleDismissal();
-                        },
+                      child: SafeArea(
+                        child: Row(
+                          children: [
+                    IconButton(
+                      icon: const Icon(Icons.download_rounded),
+                      color: widget.closeButtonColor,
+                      tooltip: widget.closeButtonTooltip,
+                      onPressed: () async {
+                      final image =   widget.imageProvider.imageBuilder(context, _pageController.page?.toInt() ?? 0);
+                      widget.onDownload.call((image as NetworkImage).url);
+
+                      },
+                    ),
+                            IconButton(
+                              icon: const Icon(Icons.close),
+                              color: widget.closeButtonColor,
+                              tooltip: widget.closeButtonTooltip,
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                                _handleDismissal();
+                              },
+                            ),
+                          ],
+                        ),
                       ),),
                              Positioned(
               left: 10,

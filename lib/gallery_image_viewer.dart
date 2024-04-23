@@ -10,12 +10,11 @@ import 'src/easy_image_viewer_dismissible_dialog.dart';
 import 'src/single_image_provider.dart';
 
 export 'src/easy_image_provider.dart' show EasyImageProvider;
-export 'src/single_image_provider.dart' show SingleImageProvider;
-export 'src/multi_image_provider.dart' show MultiImageProvider;
-
 export 'src/easy_image_view.dart' show EasyImageView;
 export 'src/easy_image_view_pager.dart' show EasyImageViewPager;
 export 'src/gallery_image_view.dart' show GalleryImageView;
+export 'src/multi_image_provider.dart' show MultiImageProvider;
+export 'src/single_image_provider.dart' show SingleImageProvider;
 
 // Defined here so we don't repeat ourselves
 const _defaultBackgroundColor = Colors.black;
@@ -45,6 +44,9 @@ Future<Dialog?> showImageViewer(
       onViewerDismissed:
           onViewerDismissed != null ? (_) => onViewerDismissed() : null,
       useSafeArea: useSafeArea,
+      onDownload: (p0) {
+        
+      },
       swipeDismissible: swipeDismissible,
       backgroundColor: backgroundColor,
       closeButtonTooltip: closeButtonTooltip,
@@ -68,6 +70,7 @@ Future<Dialog?> showImageViewerPager(
     {bool immersive = true,
     void Function(int)? onPageChanged,
     void Function(int)? onViewerDismissed,
+    required void Function(String) onDownload,
     bool useSafeArea = false,
     bool swipeDismissible = false,
     Color backgroundColor = _defaultBackgroundColor,
@@ -90,6 +93,7 @@ Future<Dialog?> showImageViewerPager(
             swipeDismissible: swipeDismissible,
             backgroundColor: backgroundColor,
             closeButtonColor: closeButtonColor,
+            onDownload: onDownload,
             closeButtonTooltip: closeButtonTooltip);
       });
 }

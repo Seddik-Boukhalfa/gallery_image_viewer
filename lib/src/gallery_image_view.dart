@@ -30,6 +30,8 @@ class GalleryImageView extends StatelessWidget {
   /// Text color
   final Color textColor;
 
+  final Function(String) onDownload;
+
   const GalleryImageView(
       {Key? key,
       required this.listImage,
@@ -40,6 +42,7 @@ class GalleryImageView extends StatelessWidget {
       this.galleryType = 0,
       this.shortImage = true,
       this.fontSize = 32,
+      required this.onDownload,
       this.textColor = Colors.white})
       : super(key: key);
 
@@ -64,6 +67,8 @@ class GalleryImageView extends StatelessWidget {
       return SizedBox(width: width, height: height, child: _uiImage2(context));
     } else if (galleryType == 3) {
       return SizedBox(width: width, height: height, child: _uiImage3(context));
+    } else if (galleryType == 4) {
+      return SizedBox(width: width, height: height, child: _uiImage4(context));
     } else {
       return SizedBox(width: width, height: height, child: _uiImage1(context));
     }
@@ -94,7 +99,7 @@ class GalleryImageView extends StatelessWidget {
                       onTap: () {
                         MultiImageProvider multiImageProvider =
                             MultiImageProvider(listImage, initialIndex: i);
-                        showImageViewerPager(context, multiImageProvider,
+                        showImageViewerPager(context, multiImageProvider,onDownload: onDownload,
                             backgroundColor: Colors.black.withOpacity(0.3));
                       },
                       child: Align(
@@ -104,7 +109,7 @@ class GalleryImageView extends StatelessWidget {
                           style: TextStyle(
                               color: textColor,
                               fontSize: fontSize,
-                              shadows: textShadow),
+                              shadows: textShadow,),
                         ),
                       ),
                     ),
@@ -138,6 +143,7 @@ class GalleryImageView extends StatelessWidget {
                       MultiImageProvider multiImageProvider =
                           MultiImageProvider(listImage, initialIndex: i);
                       showImageViewerPager(context, multiImageProvider,
+                          onDownload: onDownload,
                           backgroundColor: Colors.black.withOpacity(0.3));
                     },
                   ),
@@ -174,6 +180,7 @@ class GalleryImageView extends StatelessWidget {
                       MultiImageProvider multiImageProvider =
                           MultiImageProvider(listImage, initialIndex: 0);
                       showImageViewerPager(context, multiImageProvider,
+                          onDownload: onDownload,
                           backgroundColor: Colors.black.withOpacity(0.3));
                     },
                   ),
@@ -205,6 +212,7 @@ class GalleryImageView extends StatelessWidget {
                                   MultiImageProvider(listImage,
                                       initialIndex: i);
                               showImageViewerPager(context, multiImageProvider,
+                                  onDownload: onDownload,
                                   backgroundColor:
                                       Colors.black.withOpacity(0.3));
                             },
@@ -251,6 +259,7 @@ class GalleryImageView extends StatelessWidget {
                       MultiImageProvider multiImageProvider =
                           MultiImageProvider(listImage, initialIndex: 0);
                       showImageViewerPager(context, multiImageProvider,
+                          onDownload: onDownload,
                           backgroundColor: Colors.black.withOpacity(0.3));
                     },
                   )),
@@ -280,6 +289,7 @@ class GalleryImageView extends StatelessWidget {
                             MultiImageProvider multiImageProvider =
                                 MultiImageProvider(listImage, initialIndex: i);
                             showImageViewerPager(context, multiImageProvider,
+                                onDownload: onDownload,
                                 backgroundColor: Colors.black.withOpacity(0.3));
                           },
                         ),
@@ -319,6 +329,7 @@ class GalleryImageView extends StatelessWidget {
                       MultiImageProvider multiImageProvider =
                           MultiImageProvider(listImage, initialIndex: 0);
                       showImageViewerPager(context, multiImageProvider,
+                          onDownload: onDownload,
                           backgroundColor: Colors.black.withOpacity(0.3));
                     },
                   ),
@@ -348,6 +359,7 @@ class GalleryImageView extends StatelessWidget {
                                   MultiImageProvider(listImage,
                                       initialIndex: i);
                               showImageViewerPager(context, multiImageProvider,
+                                  onDownload: onDownload,
                                   backgroundColor:
                                       Colors.black.withOpacity(0.3));
                             },
@@ -393,7 +405,7 @@ class GalleryImageView extends StatelessWidget {
                   onTap: () {
                     MultiImageProvider multiImageProvider =
                         MultiImageProvider(listImage, initialIndex: 0);
-                    showImageViewerPager(context, multiImageProvider,
+                    showImageViewerPager(context, multiImageProvider, onDownload: onDownload,
                         backgroundColor: Colors.black.withOpacity(0.3));
                   },
                 ),
@@ -424,6 +436,7 @@ class GalleryImageView extends StatelessWidget {
                             MultiImageProvider multiImageProvider =
                                 MultiImageProvider(listImage, initialIndex: i);
                             showImageViewerPager(context, multiImageProvider,
+                                onDownload: onDownload,
                                 backgroundColor: Colors.black.withOpacity(0.3));
                           },
                         ),
@@ -436,6 +449,144 @@ class GalleryImageView extends StatelessWidget {
         )
       ],
     );
+  }
+
+   /// Left - Right(Top - Bottom)
+  Widget _uiImage4(BuildContext context) {
+    int imgMore = listImage.length > 4 ? listImage.length - 4 : 0;
+
+  return Column(
+        children: [
+          Expanded(
+            child: Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    decoration: imageDecoration,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: listImage[0],
+                          fit: boxFit,
+                        ),
+                      ),
+                      width: double.infinity,
+                      height: double.infinity,
+                      child: Material(
+                        color: Colors.transparent,
+                        child: InkWell(
+                          onTap: () {
+                            MultiImageProvider multiImageProvider = MultiImageProvider(listImage, initialIndex: 0);
+                            showImageViewerPager(context, multiImageProvider,
+                              onDownload: onDownload, backgroundColor: Colors.black.withOpacity(0.3));
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                   if (listImage.length > 1)
+                Expanded(
+                  child: Container(
+                    decoration: imageDecoration,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: listImage[1],
+                          fit: boxFit,
+                        ),
+                      ),
+                      width: double.infinity,
+                      height: double.infinity,
+                      child: Material(
+                        color: Colors.transparent,
+                        child: InkWell(
+                          onTap: () {
+                            MultiImageProvider multiImageProvider = MultiImageProvider(listImage, initialIndex: 0);
+                            showImageViewerPager(context, multiImageProvider,
+                                onDownload: onDownload,
+                                backgroundColor: Colors.black.withOpacity(0.3));
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        if (listImage.length > 2)
+          Expanded(
+            child: Row(
+              children: [
+                          if (listImage.length > 2)
+                Expanded(
+                  child: Container(
+                    decoration: imageDecoration,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: listImage[2],
+                          fit: boxFit,
+                        ),
+                      ),
+                      width: double.infinity,
+                      height: double.infinity,
+                      child: Material(
+                        color: Colors.transparent,
+                        child: InkWell(
+                          onTap: () {
+                            MultiImageProvider multiImageProvider = MultiImageProvider(listImage, initialIndex: 0);
+                            showImageViewerPager(context, multiImageProvider,
+                                  onDownload: onDownload,
+                                backgroundColor: Colors.black.withOpacity(0.3));
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                          if (listImage.length > 3)
+                Expanded(
+                  child: Container(
+                    decoration: imageDecoration,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: listImage[3],
+                          fit: boxFit,
+                        ),
+                      ),
+                      width: double.infinity,
+                      height: double.infinity,
+                      child: Material(
+                        color: Colors.transparent,
+                        child: InkWell(
+                          onTap: () {
+                            MultiImageProvider multiImageProvider = MultiImageProvider(listImage, initialIndex: 0);
+                            showImageViewerPager(context, multiImageProvider,
+                                  onDownload: onDownload,
+                                backgroundColor: Colors.black.withOpacity(0.3));
+                          },
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Text(
+                              imgMore >= 1 ? "+$imgMore" : "",
+                              style: TextStyle(color: textColor, fontSize: fontSize, shadows: textShadow),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        
+        ],
+      );
+
   }
 }
 

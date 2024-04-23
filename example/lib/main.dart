@@ -37,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Image.network("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg").image,
     Image.network("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg").image,
     Image.network("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg").image,
-    Image.network("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg").image
+    Image.network("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg").image,
   ];
 
   @override
@@ -65,12 +65,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () {
                   MultiImageProvider multiImageProvider =
                       MultiImageProvider(_imageProviders);
-                  showImageViewerPager(context, multiImageProvider,
+                  showImageViewerPager(context, multiImageProvider, onDownload: (d) {},
                       swipeDismissible: true);
                 }),
             const Text("<<<< Gallery type 1 >>>>"),
             GalleryImageView(
               listImage: _imageProviders,
+               onDownload: (d) {},
               width: 200,
               height: 200,
               imageDecoration:
@@ -83,6 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
             const Text("<<<< Gallery type 2 >>>>"),
             GalleryImageView(
               listImage: _imageProviders,
+               onDownload: (d) {},
               width: 200,
               height: 200,
               imageDecoration:
@@ -92,9 +94,22 @@ class _MyHomePageState extends State<MyHomePage> {
             const SizedBox(
               height: 10,
             ),
+            const Text("<<<< Gallery type 4 >>>>"),
+            GalleryImageView(
+              listImage: _imageProviders,
+               onDownload: (d) {},
+              width: 200,
+              height: 200,
+              imageDecoration: BoxDecoration(border: Border.all(color: Colors.white)),
+              galleryType: 4,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
             const Text("<<<< Gallery type 3 >>>>"),
             GalleryImageView(
               listImage: _imageProviders,
+               onDownload: (d) {},
               width: 200,
               height: 200,
               imageDecoration:

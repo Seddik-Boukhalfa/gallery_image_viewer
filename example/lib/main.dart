@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:gallery_image_viewer/gallery_image_viewer.dart';
 
@@ -32,12 +33,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<ImageProvider> _imageProviders = [
-    Image.network("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg").image,
-    Image.network("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg").image,
-    Image.network("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg").image,
-    Image.network("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg").image,
-    Image.network("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg").image,
+  final List<ImageProvider> _imageProviders = const [
+    NetworkImage("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg"),
+    NetworkImage("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg"),
+    NetworkImage("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg"),
+    NetworkImage("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg"),
+    NetworkImage("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg"),
   ];
 
   @override

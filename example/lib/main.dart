@@ -74,6 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
                onDownload: (d) {},
               width: 200,
               height: 200,
+              seperatorColor: Colors.white,
               imageDecoration:
                   BoxDecoration(border: Border.all(color: Colors.white)),
               galleryType: 1,
@@ -87,6 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
                onDownload: (d) {},
               width: 200,
               height: 200,
+              seperatorColor: Colors.white,
               imageDecoration:
                   BoxDecoration(border: Border.all(color: Colors.white)),
               galleryType: 2,
@@ -100,7 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
                onDownload: (d) {},
               width: 200,
               height: 200,
-              imageDecoration: BoxDecoration(border: Border.all(color: Colors.white)),
+              seperatorColor: Colors.white,
               galleryType: 4,
             ),
             const SizedBox(
@@ -112,6 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
                onDownload: (d) {},
               width: 200,
               height: 200,
+              seperatorColor: Colors.white,
               imageDecoration:
                   BoxDecoration(border: Border.all(color: Colors.white)),
               galleryType: 3,

@@ -30,6 +30,8 @@ class GalleryImageView extends StatelessWidget {
   /// Text color
   final Color textColor;
 
+  final Color seperatorColor;
+
   final Function(String) onDownload;
 
   const GalleryImageView(
@@ -43,6 +45,7 @@ class GalleryImageView extends StatelessWidget {
       this.shortImage = true,
       this.fontSize = 32,
       required this.onDownload,
+      required this.seperatorColor,
       this.textColor = Colors.white})
       : super(key: key);
 
@@ -465,7 +468,6 @@ class GalleryImageView extends StatelessWidget {
                     decoration: imageDecoration,
                     child: Container(
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
                         image: DecorationImage(
                           image: listImage[0],
                           fit: boxFit,
@@ -487,12 +489,17 @@ class GalleryImageView extends StatelessWidget {
                   ),
                 ),
                    if (listImage.length > 1)
-                Expanded(
+                ...[
+                  Container(
+                    height: double.infinity,
+                    width: 2,
+                    color: seperatorColor,
+                  ),
+                  Expanded(
                   child: Container(
                     decoration: imageDecoration,
                     child: Container(
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
                         image: DecorationImage(
                           image: listImage[1],
                           fit: boxFit,
@@ -513,12 +520,18 @@ class GalleryImageView extends StatelessWidget {
                       ),
                     ),
                   ),
-                ),
+                ),],
               ],
             ),
           ),
         if (listImage.length > 2)
-          Expanded(
+          ...[
+             Container(
+            height: 2,
+            width: double.infinity,
+            color: seperatorColor,
+          ),
+            Expanded(
             child: Row(
               children: [
                           if (listImage.length > 2)
@@ -527,7 +540,6 @@ class GalleryImageView extends StatelessWidget {
                     decoration: imageDecoration,
                     child: Container(
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
                         image: DecorationImage(
                           image: listImage[2],
                           fit: boxFit,
@@ -550,12 +562,16 @@ class GalleryImageView extends StatelessWidget {
                   ),
                 ),
                           if (listImage.length > 3)
+                   ...[        Container(
+                    height: double.infinity,
+                    width: 2,
+                    color: seperatorColor,
+                  ),
                 Expanded(
                   child: Container(
                     decoration: imageDecoration,
                     child: Container(
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
                         image: DecorationImage(
                           image: listImage[3],
                           fit: boxFit,
@@ -583,10 +599,10 @@ class GalleryImageView extends StatelessWidget {
                       ),
                     ),
                   ),
-                ),
+                ),]
               ],
             ),
-          ),
+          ),]
         
         ],
       );

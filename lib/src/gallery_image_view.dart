@@ -511,7 +511,7 @@ class GalleryImageView extends StatelessWidget {
                         color: Colors.transparent,
                         child: InkWell(
                           onTap: () {
-                            MultiImageProvider multiImageProvider = MultiImageProvider(listImage, initialIndex: 0);
+                            MultiImageProvider multiImageProvider = MultiImageProvider(listImage, initialIndex: 1);
                             showImageViewerPager(context, multiImageProvider,
                                 onDownload: onDownload,
                                 backgroundColor: Colors.black.withOpacity(0.3));
@@ -551,7 +551,7 @@ class GalleryImageView extends StatelessWidget {
                         color: Colors.transparent,
                         child: InkWell(
                           onTap: () {
-                            MultiImageProvider multiImageProvider = MultiImageProvider(listImage, initialIndex: 0);
+                            MultiImageProvider multiImageProvider = MultiImageProvider(listImage, initialIndex: 2);
                             showImageViewerPager(context, multiImageProvider,
                                   onDownload: onDownload,
                                 backgroundColor: Colors.black.withOpacity(0.3));
@@ -583,7 +583,7 @@ class GalleryImageView extends StatelessWidget {
                         color: Colors.transparent,
                         child: InkWell(
                           onTap: () {
-                            MultiImageProvider multiImageProvider = MultiImageProvider(listImage, initialIndex: 0);
+                            MultiImageProvider multiImageProvider = MultiImageProvider(listImage, initialIndex: 3);
                             showImageViewerPager(context, multiImageProvider,
                                   onDownload: onDownload,
                                 backgroundColor: Colors.black.withOpacity(0.3));

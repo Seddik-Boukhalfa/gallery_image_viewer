@@ -1,5 +1,6 @@
 
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -126,7 +127,7 @@ class _EasyImageViewerDismissibleDialogState
                       tooltip: widget.closeButtonTooltip,
                       onPressed: () async {
                       final image =   widget.imageProvider.imageBuilder(context, _pageController.page?.toInt() ?? 0);
-                      widget.onDownload.call((image as NetworkImage).url);
+                      widget.onDownload.call((image as CachedNetworkImageProvider).url);
 
                       },
                     ),

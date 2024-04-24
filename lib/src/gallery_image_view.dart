@@ -465,6 +465,7 @@ class GalleryImageView extends StatelessWidget {
                     decoration: imageDecoration,
                     child: Container(
                       decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
                         image: DecorationImage(
                           image: listImage[0],
                           fit: boxFit,
@@ -491,6 +492,7 @@ class GalleryImageView extends StatelessWidget {
                     decoration: imageDecoration,
                     child: Container(
                       decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
                         image: DecorationImage(
                           image: listImage[1],
                           fit: boxFit,
@@ -525,6 +527,7 @@ class GalleryImageView extends StatelessWidget {
                     decoration: imageDecoration,
                     child: Container(
                       decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
                         image: DecorationImage(
                           image: listImage[2],
                           fit: boxFit,
@@ -552,6 +555,7 @@ class GalleryImageView extends StatelessWidget {
                     decoration: imageDecoration,
                     child: Container(
                       decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
                         image: DecorationImage(
                           image: listImage[3],
                           fit: boxFit,
